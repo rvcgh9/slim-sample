@@ -14,7 +14,7 @@ jobs:
                 experimental: [false]
                 include:
                     - php: 8.3
-                      analysis: true
+                      analysis: false
 
         defaults:
           run:
@@ -36,11 +36,9 @@ jobs:
                 working-directory: ./src
 
             - name: Coding standards
-              if: matrix.analysis
               run: vendor/bin/phpcs
 
             - name: Static analysis
-              if: matrix.analysis
               run: vendor/bin/phpstan
 
             - name: Tests
